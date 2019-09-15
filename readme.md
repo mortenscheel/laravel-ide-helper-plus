@@ -17,13 +17,13 @@ I've submitted a  [pull-request](https://github.com/barryvdh/laravel-ide-helper/
 Via Composer
 
 ``` bash
-$ composer require --dev mortenscheel/automatic-model-docblocks
+$ composer require --dev mortenscheel/laravel-ide-helper-plus
 ```
 
 Publish config
 
 ``` bash
-$ php artisan vendor:publish --tag automatic-model-updates
+$ php artisan vendor:publish --tag ide-helper-plus
 ```
 
 Default configuration
