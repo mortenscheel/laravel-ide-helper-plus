@@ -1,0 +1,41 @@
+{
+    "name": "mortenscheel/laravel-ide-helper-plus",
+    "description": "An extension for barryvdh/laravel-ide-helper. Automatically update an Eloquent model's docblock when the underlying table is modified by a migration. Automatically execute ide-helper:generate and ide-helper:meta when Composer is updated.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Morten Scheel",
+            "email": "morten@mortenscheel.com"
+        }
+    ],
+    "homepage": "https://github.com/mortenscheel/laravel-ide-helper-plus",
+    "keywords": ["Laravel", "LaravelIdeHelperPlus"],
+    "require": {
+        "illuminate/support": "~5|^6.0",
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "doctrine/dbal": "^2.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MortenScheel\\LaravelIdeHelperPlus\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MortenScheel\\LaravelIdeHelperPlus\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MortenScheel\\LaravelIdeHelperPlus\\LaravelIdeHelperPlusServiceProvider"
+            ]
+        }
+    }
+}
