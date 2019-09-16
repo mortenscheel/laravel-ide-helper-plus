@@ -38,9 +38,10 @@ class MigrationQueryRecorder
      */
     public function getAffectedModels(): Collection
     {
+        $this->table_model_map = $this->resolveModels();
         $models = collect();
         foreach ($this->queries as $query) {
-            if (preg_match_all('/(?:create|alter) table [\'"`]?(\w*)[\'"`]/i', $query, $matches)) {
+            if (preg_match_all('/(?:create|alter) table [\'"`]?(\w*)[\'"`]?/i', $query, $matches)) {
                 $modified_tables = array_unique($matches[1]);
                 foreach ($modified_tables as $modified_table) {
                     $model = $this->resolveModel($modified_table);
@@ -105,7 +106,6 @@ class MigrationQueryRecorder
     {
         $this->recording = true;
         $this->queries = collect();
-        $this->table_model_map = $this->resolveModels();
     }
 
     public function stopRecording()

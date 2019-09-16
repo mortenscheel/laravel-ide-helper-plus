@@ -4,6 +4,7 @@
 namespace MortenScheel\LaravelIdeHelperPlus\Listeners;
 
 use Illuminate\Database\Events\QueryExecuted;
+use Illuminate\Support\Facades\Config;
 use MortenScheel\LaravelIdeHelperPlus\MigrationQueryRecorder;
 
 class RecordMigrationQuery
@@ -30,7 +31,8 @@ class RecordMigrationQuery
      */
     public function handle(QueryExecuted $event)
     {
-        if ($this->recorder->isRecording()) {
+        if (Config::get('ide-helper-plus.auto-docblocks.enabled') &&
+            $this->recorder->isRecording()) {
             $this->recorder->recordQuery($event->sql);
         }
     }

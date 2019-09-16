@@ -32,7 +32,8 @@ class UpdateAffectedModelDocblocks
      */
     public function handle()
     {
-        if ($this->recorder->isRecording()) {
+        if (Config::get('ide-helper-plus.auto-docblocks.enabled') &&
+            $this->recorder->isRecording()) {
             $this->recorder->stopRecording();
             $affectedModels = $this->recorder->getAffectedModels();
             if ($affectedModels->isNotEmpty()) {

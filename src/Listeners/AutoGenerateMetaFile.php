@@ -5,9 +5,10 @@ namespace MortenScheel\LaravelIdeHelperPlus\Listeners;
 
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\Console\Output\StreamOutput;
 
-class AutoGenerateIdeHelper
+class AutoGenerateMetaFile
 {
     /**
      * Enable query recording
@@ -17,8 +18,13 @@ class AutoGenerateIdeHelper
      */
     public function handle(CommandFinished $command)
     {
-        if ($command->command === 'package:discover') {
-            Artisan::call('ide-helper:generate', [], new StreamOutput(STDOUT));
+        if (
+            ($command->command === 'package:discover') &&
+            Config::get('ide-helper-plus.auto-meta.enabled')
+        ) {
+            Artisan::call('ide-helper:meta', [
+                '--filename' => base_path('.phpstorm.meta.php')
+            ], new StreamOutput(STDOUT));
         }
     }
 }

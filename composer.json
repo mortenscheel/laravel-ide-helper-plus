@@ -1,7 +1,7 @@
 {
     "name": "mortenscheel/laravel-ide-helper-plus",
     "description": "An automation extension for barryvdh/laravel-ide-helper.",
-    "version": "0.1.0",
+    "version": "0.2",
     "license": "MIT",
     "authors": [
         {

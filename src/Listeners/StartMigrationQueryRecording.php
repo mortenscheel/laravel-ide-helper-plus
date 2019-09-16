@@ -3,6 +3,7 @@
 
 namespace MortenScheel\LaravelIdeHelperPlus\Listeners;
 
+use Illuminate\Support\Facades\Config;
 use MortenScheel\LaravelIdeHelperPlus\MigrationQueryRecorder;
 
 class StartMigrationQueryRecording
@@ -28,6 +29,8 @@ class StartMigrationQueryRecording
      */
     public function handle()
     {
-        $this->recorder->startRecording();
+        if (Config::get('ide-helper-plus.auto-docblocks.enabled')) {
+            $this->recorder->startRecording();
+        }
     }
 }
