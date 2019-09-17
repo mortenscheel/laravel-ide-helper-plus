@@ -23,7 +23,7 @@ class AutoGenerateIdeHelperFile
             Config::get('ide-helper-plus.auto-generate.enabled')
         ) {
             Artisan::call('ide-helper:generate', [
-                'filename' => base_path('_ide-helper.php')
+                'filename' => base_path('_ide_helper.php')
             ], new StreamOutput(STDOUT));
         }
     }

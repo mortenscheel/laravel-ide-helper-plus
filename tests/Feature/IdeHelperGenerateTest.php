@@ -13,7 +13,7 @@ class IdeHelperGenerateTest extends TestCase
     public function testIdeHelperFileIsGeneratedWhenConfigEnabled()
     {
         Config::set('ide-helper-plus.auto-generate.enabled', true);
-        $expected_path = $this->getTestbenchPath() . '/_ide-helper.php';
+        $expected_path = $this->getTestbenchPath() . '/_ide_helper.php';
         $this->assertFileNotExists($expected_path);
         Artisan::call('package:discover');
         $this->assertFileExists($expected_path);
@@ -22,7 +22,7 @@ class IdeHelperGenerateTest extends TestCase
     public function testIdeHelperFileIsNotGeneratedWhenConfigIsNotEnabled()
     {
         Config::set('ide-helper-plus.auto-generate.enabled', false);
-        $expected_path = $this->getTestbenchPath() . '/_ide-helper.php';
+        $expected_path = $this->getTestbenchPath() . '/_ide_helper.php';
         $this->assertFileNotExists($expected_path);
         Artisan::call('package:discover');
         $this->assertFileNotExists($expected_path);
